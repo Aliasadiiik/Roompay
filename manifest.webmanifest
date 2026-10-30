@@ -1,0 +1,17 @@
+{
+  "name": "RoomPay 205",
+  "short_name": "RoomPay 205",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07152e",
+  "theme_color": "#071a3a",
+  "description": "مدیریت هزینه‌های اتاق ۲۰۵",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

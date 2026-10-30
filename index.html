@@ -2,610 +2,131 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101827">
-<title>RoomPay | حساب‌وکتاب اتاق</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#071a3a">
+<meta name="description" content="RoomPay 205 - مدیریت هزینه‌های اتاق">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>RoomPay 205</title>
 <style>
-*{box-sizing:border-box}
-body{
-  margin:0;padding:20px;
-  background:#101827;color:#f1f5f9;
-  font-family:Tahoma,Arial,sans-serif;
-}
-.container{max-width:650px;margin:auto}
-header{text-align:center;padding:20px 0}
-header h1{color:#38bdf8;margin-bottom:8px}
-header p{color:#94a3b8;font-size:14px;line-height:2}
-.card{
-  background:#1e293b;border:1px solid #334155;
-  border-radius:18px;padding:20px;margin:16px 0;
-}
-h2{font-size:18px;margin-top:0}
-input,select,button{
-  font-family:inherit;font-size:14px;border-radius:10px;
-}
-input,select{
-  width:100%;padding:12px;margin:7px 0 12px;
-  background:#0f172a;color:white;border:1px solid #475569;
-}
-button{
-  border:0;padding:12px 16px;cursor:pointer;font-weight:bold;
-}
-.primary{background:#38bdf8;color:#082f49}
-.secondary{background:#334155;color:white}
-.danger{background:#7f1d1d;color:white}
-.row{display:flex;gap:8px;align-items:center}
-.row input{flex:1;min-width:0}
-.row button{margin-bottom:5px}
-.member,.expense,.settlement{
-  background:#0f172a;border-radius:12px;padding:13px;
-  margin:10px 0;border:1px solid #334155;
-}
-.muted{color:#94a3b8;font-size:12px;line-height:1.9}
-.checklist{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:8px;margin:8px 0 15px;
-}
-.checkitem{
-  display:flex;align-items:center;gap:8px;
-  background:#0f172a;padding:10px;border-radius:9px;
-  font-size:13px;
-}
-.checkitem input{width:auto;margin:0}
-.stats{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;
-}
-.stat{
-  background:#0f172a;padding:14px;border-radius:12px;
-}
-.stat small{color:#94a3b8}
-.stat strong{display:block;margin-top:9px;font-size:17px}
-.green{color:#4ade80}
-.red{color:#f87171}
-.actions{display:flex;gap:8px;margin-top:10px}
-.actions button{flex:1}
-.hidden{display:none}
-hr{border:0;border-top:1px solid #334155;margin:18px 0}
-label{font-size:13px;color:#cbd5e1}
-footer{text-align:center;color:#64748b;font-size:12px;padding:20px}
-@media(max-width:400px){
-  body{padding:12px}
-  .card{padding:15px}
-  .checklist{grid-template-columns:1fr 1fr}
-}
+:root{--bg:#07152e;--panel:#10284c;--panel2:#0b2041;--blue:#168bff;--cyan:#35d5ff;--text:#eef7ff;--muted:#9db6d5;--green:#20d69a;--red:#ff6684;--gold:#ffc34d;--line:#23466f}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#173e70 0,#0a1d3b 45%,var(--bg) 100%);color:var(--text);font-family:Tahoma,Arial,sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit;border:0}
+.app{max-width:760px;margin:auto;min-height:100vh;padding:16px 16px 90px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:4px 0 26px}
+.brand{display:flex;align-items:center;gap:10px}.brand img{width:58px;height:58px;filter:drop-shadow(0 5px 10px #007bff66)}.brand-name{font-size:22px;font-weight:900;letter-spacing:.2px}.brand-name span{color:var(--cyan)}
+.btn3d{background:linear-gradient(150deg,#35caff 0%,#0875ee 55%,#0750bb 100%);box-shadow:0 5px 0 #063a82,0 10px 20px #007bff35,inset 0 1px 1px #ffffff88;border:1px solid #6bdcff;border-radius:17px;padding:14px 18px;font-weight:bold;transition:transform .16s,filter .16s;position:relative}
+.btn3d:active{transform:translateY(4px);box-shadow:0 1px 0 #063a82,0 4px 9px #007bff30}
+.btn3d.secondary{background:linear-gradient(150deg,#315a88,#18375e 60%,#10294c);border-color:#4779a8;box-shadow:0 5px 0 #091a31,0 10px 18px #0005,inset 0 1px 1px #ffffff33}
+.btn3d.green{background:linear-gradient(150deg,#3be7b2,#0ca77c 60%,#08785d);border-color:#70f5c9;box-shadow:0 5px 0 #07553f,0 10px 18px #00b98530}
+.btn3d.purple{background:linear-gradient(150deg,#b08aff,#7045d8 60%,#4928a8);border-color:#d0b8ff;box-shadow:0 5px 0 #301875,0 10px 18px #8757ff30}
+.btn3d.gold{background:linear-gradient(150deg,#ffe08a,#ed9d16 60%,#b86b05);border-color:#fff0b5;box-shadow:0 5px 0 #794500,0 10px 18px #ffb52d30}
+.small{padding:9px 12px;border-radius:12px;font-size:12px}
+.home-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:25px}
+.home-card{min-height:124px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;font-size:16px}
+.home-card .ico{font-size:30px;filter:drop-shadow(0 3px 4px #00152c)}
+.welcome{text-align:center;margin:28px 0 14px;color:var(--muted);line-height:2;font-size:13px}
+.panel{background:linear-gradient(145deg,#112d53,#0b1d3b);border:1px solid #244b78;border-radius:22px;padding:18px;margin:14px 0;box-shadow:0 14px 35px #0004,inset 0 1px #ffffff0b}
+.page-head{display:flex;align-items:center;gap:12px;margin:8px 0 18px}.back{background:#17385f;border:1px solid #3a6793;border-radius:12px;padding:10px 14px}.page-head h2{font-size:19px;margin:0;flex:1}
+.hidden{display:none!important}.field{margin:13px 0}.field label{display:block;color:#b8cee7;font-size:13px;margin-bottom:7px}
+input,select,textarea{width:100%;background:#071a35;color:var(--text);border:1px solid #31577f;border-radius:12px;padding:13px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #35d5ff18}
+.row{display:flex;gap:9px;align-items:center}.row>*{flex:1;min-width:0}
+.muted{color:var(--muted);font-size:12px;line-height:1.9}.member,.expense,.item{background:#091d3a;border:1px solid #24466e;border-radius:15px;padding:13px;margin:9px 0}
+.member-line{display:flex;align-items:center;justify-content:space-between;gap:10px}.pill{font-size:11px;color:#9edfff;background:#123b67;border:1px solid #27649b;padding:5px 9px;border-radius:30px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{display:flex;align-items:center;gap:8px;background:#091c38;border:1px solid #23466f;border-radius:11px;padding:10px;font-size:13px}.check input{width:auto}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.tab{background:#0a1c38;border:1px solid #2c527a;padding:10px 13px;border-radius:12px;color:#c5d9ee}.tab.active{background:#0875d9;border-color:#62d4ff;color:white}
+.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{padding:14px;background:#091d3a;border:1px solid #254a74;border-radius:15px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:17px;margin-top:8px}
+.green-text{color:var(--green)}.red-text{color:var(--red)}.gold-text{color:var(--gold)}
+.actions{display:flex;gap:8px;margin-top:10px}.actions button{flex:1}
+.empty{text-align:center;padding:25px;color:var(--muted);font-size:13px}
+hr{border:0;border-top:1px solid #24466e;margin:17px 0}
+.bottom-note{text-align:center;color:#6f91b7;font-size:11px;margin:28px 0}
+#splash{position:fixed;inset:0;z-index:99;background:radial-gradient(circle at 50% 30%,#174b83,#07152e 68%);display:flex;align-items:center;justify-content:center;transition:opacity .5s}
+.splash-inner{text-align:center;animation:float 2.2s ease-in-out infinite}.splash-inner img{width:140px;height:140px;filter:drop-shadow(0 12px 20px #008cff66)}.splash-inner h1{margin:10px 0 4px;font-size:30px}.splash-inner h1 span{color:var(--cyan)}.splash-inner p{color:#b6d6f6;margin:12px 0 22px}.loader{width:120px;height:5px;border-radius:10px;background:#193b62;margin:auto;overflow:hidden}.loader:after{content:"";display:block;height:100%;width:40%;background:linear-gradient(90deg,#168bff,#52e5ff);border-radius:10px;animation:load 1.3s infinite}
+@keyframes load{from{transform:translateX(250%)}to{transform:translateX(-250%)}}@keyframes float{50%{transform:translateY(-8px)}}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:#153c63;border:1px solid #3a8bc5;color:white;padding:12px 18px;border-radius:14px;opacity:0;transition:.25s;z-index:120;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:420px){.app{padding:13px 12px 80px}.home-grid{gap:13px}.home-card{min-height:112px;font-size:14px}.brand-name{font-size:20px}.brand img{width:52px;height:52px}.panel{padding:15px}.top{margin-bottom:20px}}
 </style>
 </head>
-
 <body>
-<div class="container">
-<header>
-  <h1>🏠 RoomPay</h1>
-  <p>حساب‌وکتاب خوابگاه، بدون دردسر!<br>
-  هزینه‌ها رو ثبت کن و بذار محاسبات رو ما انجام بدیم.</p>
+<div id="splash"><div class="splash-inner"><img src="icon.svg" alt="RoomPay 205"><h1>Room<span>Pay</span> 205</h1><p>زندگی بهتر، حساب‌وکتاب مرتب‌تر</p><div class="loader"></div></div></div>
+<div class="app">
+<header class="top">
+  <div class="brand"><img src="icon.svg" alt="لوگوی RoomPay"><div class="brand-name">Room<span>Pay</span> <small style="font-size:12px;color:#9ecfff">205</small></div></div>
+  <button class="btn3d secondary small" onclick="showPage('members')">👥 اعضای اتاق</button>
 </header>
-
-<section class="card">
-  <h2>👥 اعضای اتاق</h2>
-  <div class="row">
-    <input id="memberName" placeholder="اسم عضو جدید">
-    <button class="primary" onclick="addMember()">افزودن</button>
+<main id="home">
+  <div class="welcome">به اتاق ۲۰۵ خوش اومدی!<br>مدیریت هزینه‌ها، ساده‌تر از همیشه 💙</div>
+  <div class="home-grid">
+    <button class="btn3d green home-card" onclick="showPage('add')"><span class="ico">💸</span>ثبت هزینه جدید</button>
+    <button class="btn3d home-card" onclick="showPage('history')"><span class="ico">📜</span>تاریخچه هزینه‌ها</button>
+    <button class="btn3d purple home-card" onclick="showPage('balances')"><span class="ico">📊</span>وضعیت حساب‌ها</button>
+    <button class="btn3d gold home-card" onclick="showPage('settle')"><span class="ico">💳</span>تسویه‌حساب</button>
   </div>
-  <div id="membersList"></div>
-  <p class="muted">برای جلوگیری از خراب‌شدن حساب‌های قبلی، اعضایی که در هزینه‌ها استفاده شده‌اند از این نسخه حذف نمی‌شوند.</p>
+  <div class="bottom-note">RoomPay 205 · حساب‌وکتاب اتاق، منظم و بی‌دردسر</div>
+</main>
+<section id="members" class="page hidden">
+ <div class="page-head"><button class="back" onclick="showPage('home')">→</button><h2>👥 اعضای اتاق</h2></div>
+ <div class="panel"><div class="field"><label>نام عضو جدید</label><div class="row"><input id="newMember" placeholder="مثلاً علی"><button class="btn3d small" onclick="addMember()">افزودن</button></div></div><div id="membersList"></div></div>
 </section>
-
-<section class="card">
-  <h2>💸 ثبت هزینه جدید</h2>
-  <label for="expenseTitle">عنوان هزینه</label>
-  <input id="expenseTitle" placeholder="مثلاً شام یا خرید وسیله">
-
-  <label for="expenseAmount">مبلغ کل (تومان)</label>
-  <input id="expenseAmount" type="number" min="1" step="1" placeholder="مثلاً 400000">
-
-  <label for="payer">چه کسی پول رو پرداخت کرد؟</label>
-  <select id="payer"></select>
-
-  <label>چه کسانی در این هزینه شریک هستند؟</label>
-  <div id="participants" class="checklist"></div>
-
-  <button class="primary" id="saveExpenseBtn" onclick="saveExpense()" style="width:100%">
-    ثبت هزینه
-  </button>
-  <button class="secondary hidden" id="cancelEditBtn" onclick="cancelEdit()" style="width:100%;margin-top:8px">
-    انصراف از ویرایش
-  </button>
-  <p class="muted">هزینه بین افراد انتخاب‌شده به‌صورت مساوی تقسیم می‌شود. پرداخت‌کننده لزوماً نباید جزو افراد مشمول باشد.</p>
+<section id="add" class="page hidden">
+ <div class="page-head"><button class="back" onclick="showPage('home')">→</button><h2>💸 ثبت هزینه جدید</h2></div>
+ <div class="panel">
+  <div class="field"><label>عنوان هزینه</label><input id="title" placeholder="مثلاً خرید مواد غذایی"></div>
+  <div class="field"><label>مبلغ کل (تومان)</label><input id="amount" type="number" min="1" placeholder="مثلاً ۴۰۰۰۰۰"></div>
+  <div class="field"><label>پرداخت‌کننده</label><select id="payer"></select></div>
+  <div class="field"><label>افراد مشمول هزینه</label><div id="participants" class="checks"></div></div>
+  <div class="field"><label>روش تقسیم</label><div class="tabs"><button class="tab active" id="equalTab" onclick="setMode('equal')">تقسیم مساوی</button><button class="tab" id="manualTab" onclick="setMode('manual')">تقسیم دستی</button></div></div>
+  <div id="manualFields" class="hidden"><p class="muted">سهم هر نفر را به تومان وارد کن. مجموع سهم‌ها باید برابر مبلغ کل باشد.</p><div id="shares"></div></div>
+  <button class="btn3d green" style="width:100%;margin-top:10px" onclick="saveExpense()">ثبت هزینه</button>
+ </div>
 </section>
-
-<section class="card">
-  <h2>📊 خلاصه حساب‌ها</h2>
-  <div class="stats">
-    <div class="stat">
-      <small>مجموع هزینه‌ها</small>
-      <strong id="totalExpenses">۰ تومان</strong>
-    </div>
-    <div class="stat">
-      <small>تعداد خریدها</small>
-      <strong id="expenseCount">۰</strong>
-    </div>
-  </div>
-  <div id="balances"></div>
+<section id="history" class="page hidden">
+ <div class="page-head"><button class="back" onclick="showPage('home')">→</button><h2>📜 تاریخچه هزینه‌ها</h2></div>
+ <div id="historyList"></div>
 </section>
-
-<section class="card">
-  <h2>💳 پیشنهاد تسویه‌حساب</h2>
-  <p class="muted">تراکنش‌های پیشنهادی برای تسویه تمام هزینه‌های ثبت‌شده:</p>
-  <div id="settlements"></div>
-  <button class="secondary" onclick="exportData()" style="width:100%;margin-top:10px">
-    📥 دریافت نسخه پشتیبان
-  </button>
-  <button class="secondary" onclick="document.getElementById('importFile').click()" style="width:100%;margin-top:8px">
-    📤 بازیابی نسخه پشتیبان
-  </button>
-  <input type="file" id="importFile" accept=".json,application/json" class="hidden" onchange="importData(event)">
-  <p class="muted">این دکمه‌ها برای پشتیبان‌گیری و بازیابی اطلاعات هستند. نسخه پشتیبان را در جای امن نگه دار.</p>
+<section id="balances" class="page hidden">
+ <div class="page-head"><button class="back" onclick="showPage('home')">→</button><h2>📊 وضعیت حساب‌ها</h2></div>
+ <div id="balanceSummary" class="statgrid"></div><div id="balanceList"></div>
 </section>
-
-<section class="card">
-  <h2>📜 تاریخچه هزینه‌ها</h2>
-  <div id="history"></div>
+<section id="settle" class="page hidden">
+ <div class="page-head"><button class="back" onclick="showPage('home')">→</button><h2>💳 تسویه‌حساب</h2></div>
+ <div class="panel"><p class="muted">پیشنهاد پرداخت بر اساس بدهی‌ها و پرداخت‌های ثبت‌شده محاسبه می‌شود.</p><div id="settlementList"></div></div>
 </section>
-
-<footer>RoomPay · نسخه اولیه 💙</footer>
 </div>
-
+<div id="toast" class="toast"></div>
 <script>
-const STORAGE_KEY = "roompay_data_v1";
-
-let data = loadData();
-let editingId = null;
-
-function loadData(){
-  try{
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if(saved){
-      const parsed = JSON.parse(saved);
-      if(Array.isArray(parsed.members) && Array.isArray(parsed.expenses)){
-        return parsed;
-      }
-    }
-  }catch(e){}
-  return {members:[], expenses:[]};
-}
-
-function saveData(){
-  try{
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  }catch(e){
-    alert("ذخیره اطلاعات انجام نشد. فضای ذخیره‌سازی مرورگر را بررسی کن.");
-  }
-}
-
-function money(n){
-  return Math.round(n).toLocaleString("fa-IR") + " تومان";
-}
-
-function numberInput(id){
-  const raw = document.getElementById(id).value.trim();
-  if(!/^\d+$/.test(raw)) return null;
-  const n = Number(raw);
-  return Number.isSafeInteger(n) && n > 0 ? n : null;
-}
-
-function safeText(value){
-  return String(value).replace(/[&<>"']/g, ch => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[ch]);
-}
-
-function makeId(){
-  return Date.now().toString(36) + Math.random().toString(36).slice(2,8);
-}
-
-function addMember(){
-  const input = document.getElementById("memberName");
-  const name = input.value.trim();
-
-  if(!name){
-    alert("اسم عضو رو وارد کن.");
-    return;
-  }
-
-  if(data.members.some(m => m.name.toLowerCase() === name.toLowerCase())){
-    alert("این اسم قبلاً ثبت شده.");
-    return;
-  }
-
-  data.members.push({id:makeId(), name});
-  input.value = "";
-  saveData();
-  render();
-}
-
-function removeMember(id){
-  const used = data.expenses.some(e =>
-    e.payerId === id || e.participantIds.includes(id)
-  );
-
-  if(used){
-    alert("این عضو در هزینه‌های قبلی استفاده شده و فعلاً قابل حذف نیست.");
-    return;
-  }
-
-  const member = data.members.find(m => m.id === id);
-  if(!member) return;
-
-  if(!confirm("عضو «" + member.name + "» حذف شود؟")) return;
-
-  data.members = data.members.filter(m => m.id !== id);
-  saveData();
-  render();
-}
-
-function renderMembers(){
-  const list = document.getElementById("membersList");
-  const payer = document.getElementById("payer");
-  const participants = document.getElementById("participants");
-  const previousPayer = payer.value;
-  const previousParticipants = [...participants.querySelectorAll("input:checked")]
-    .map(el => el.value);
-
-  list.innerHTML = "";
-  payer.innerHTML = "";
-  participants.innerHTML = "";
-
-  if(data.members.length === 0){
-    list.innerHTML = '<p class="muted">هنوز عضوی اضافه نشده. اول اسم بچه‌های اتاق رو وارد کن.</p>';
-  }
-
-  data.members.forEach(m => {
-    const div = document.createElement("div");
-    div.className = "member";
-    div.innerHTML = `
-      <div class="row">
-        <span style="flex:1">${safeText(m.name)}</span>
-        <button class="danger" onclick="removeMember('${m.id}')">حذف</button>
-      </div>`;
-    list.appendChild(div);
-
-    const option = document.createElement("option");
-    option.value = m.id;
-    option.textContent = m.name;
-    payer.appendChild(option);
-
-    const label = document.createElement("label");
-    label.className = "checkitem";
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.value = m.id;
-    checkbox.checked = previousParticipants.includes(m.id);
-    const span = document.createElement("span");
-    span.textContent = m.name;
-    label.append(checkbox, span);
-    participants.appendChild(label);
-  });
-
-  if(data.members.some(m => m.id === previousPayer)){
-    payer.value = previousPayer;
-  }
-}
-
-function saveExpense(){
-  const title = document.getElementById("expenseTitle").value.trim();
-  const amount = numberInput("expenseAmount");
-  const payerId = document.getElementById("payer").value;
-  const participantIds = [...document.querySelectorAll("#participants input:checked")]
-    .map(el => el.value);
-
-  if(data.members.length === 0){
-    alert("اول اعضای اتاق رو اضافه کن.");
-    return;
-  }
-  if(!title){
-    alert("عنوان هزینه رو وارد کن.");
-    return;
-  }
-  if(amount === null){
-    alert("مبلغ باید یک عدد صحیح مثبت به تومان باشه.");
-    return;
-  }
-  if(!data.members.some(m => m.id === payerId)){
-    alert("پرداخت‌کننده رو انتخاب کن.");
-    return;
-  }
-  if(participantIds.length === 0){
-    alert("حداقل یک نفر رو برای تقسیم هزینه انتخاب کن.");
-    return;
-  }
-
-  const expense = {
-    id: editingId || makeId(),
-    title,
-    amount,
-    payerId,
-    participantIds,
-    date: new Date().toISOString()
-  };
-
-  if(editingId){
-    const index = data.expenses.findIndex(e => e.id === editingId);
-    if(index !== -1) data.expenses[index] = expense;
-  }else{
-    data.expenses.push(expense);
-  }
-
-  cancelEdit();
-  saveData();
-  render();
-}
-
-function editExpense(id){
-  const e = data.expenses.find(x => x.id === id);
-  if(!e) return;
-
-  editingId = id;
-  document.getElementById("expenseTitle").value = e.title;
-  document.getElementById("expenseAmount").value = e.amount;
-
-  renderMembers();
-  document.getElementById("payer").value = e.payerId;
-
-  document.querySelectorAll("#participants input").forEach(el => {
-    el.checked = e.participantIds.includes(el.value);
-  });
-
-  document.getElementById("saveExpenseBtn").textContent = "ذخیره تغییرات";
-  document.getElementById("cancelEditBtn").classList.remove("hidden");
-  document.getElementById("expenseTitle").scrollIntoView({behavior:"smooth",block:"center"});
-}
-
-function cancelEdit(){
-  editingId = null;
-  document.getElementById("expenseTitle").value = "";
-  document.getElementById("expenseAmount").value = "";
-  document.getElementById("saveExpenseBtn").textContent = "ثبت هزینه";
-  document.getElementById("cancelEditBtn").classList.add("hidden");
-  renderMembers();
-}
-
-function deleteExpense(id){
-  const e = data.expenses.find(x => x.id === id);
-  if(!e) return;
-  if(!confirm("هزینه «" + e.title + "» حذف شود؟")) return;
-
-  data.expenses = data.expenses.filter(x => x.id !== id);
-  if(editingId === id) cancelEdit();
-  saveData();
-  render();
-}
-
-function calculateBalances(){
-  const balances = new Map(data.members.map(m => [m.id, 0]));
-
-  for(const e of data.expenses){
-    const ids = e.participantIds.filter(id => balances.has(id));
-    if(ids.length === 0) continue;
-
-    const base = Math.floor(e.amount / ids.length);
-    const remainder = e.amount % ids.length;
-
-    ids.forEach((id, index) => {
-      const share = base + (index < remainder ? 1 : 0);
-      balances.set(id, balances.get(id) - share);
-    });
-
-    if(balances.has(e.payerId)){
-      balances.set(e.payerId, balances.get(e.payerId) + e.amount);
-    }
-  }
-
-  return balances;
-}
-
-function calculateSettlements(balances){
-  const creditors = [];
-  const debtors = [];
-
-  for(const [id, balance] of balances){
-    if(balance > 0) creditors.push({id, amount:balance});
-    if(balance < 0) debtors.push({id, amount:-balance});
-  }
-
-  creditors.sort((a,b) => b.amount-a.amount);
-  debtors.sort((a,b) => b.amount-a.amount);
-
-  const transfers = [];
-  let i = 0, j = 0;
-
-  while(i < debtors.length && j < creditors.length){
-    const amount = Math.min(debtors[i].amount, creditors[j].amount);
-
-    if(amount > 0){
-      transfers.push({
-        from:debtors[i].id,
-        to:creditors[j].id,
-        amount
-      });
-    }
-
-    debtors[i].amount -= amount;
-    creditors[j].amount -= amount;
-
-    if(debtors[i].amount === 0) i++;
-    if(creditors[j].amount === 0) j++;
-  }
-
-  return transfers;
-}
-
-function renderBalances(){
-  const balances = calculateBalances();
-  const total = data.expenses.reduce((sum,e) => sum + e.amount, 0);
-
-  document.getElementById("totalExpenses").textContent = money(total);
-  document.getElementById("expenseCount").textContent =
-    data.expenses.length.toLocaleString("fa-IR");
-
-  const box = document.getElementById("balances");
-  box.innerHTML = "";
-
-  if(data.members.length === 0){
-    box.innerHTML = '<p class="muted">بعد از اضافه‌کردن اعضا، حساب‌ها اینجا نمایش داده می‌شن.</p>';
-    return;
-  }
-
-  data.members.forEach(m => {
-    const b = balances.get(m.id) || 0;
-    const status = b > 0 ? "طلبکار" : b < 0 ? "بدهکار" : "تسویه";
-    const color = b > 0 ? "green" : b < 0 ? "red" : "";
-
-    const div = document.createElement("div");
-    div.className = "member";
-    div.innerHTML = `
-      <strong>${safeText(m.name)}</strong>
-      <div class="muted ${color}" style="margin-top:8px">
-        ${status}${b === 0 ? "" : " · " + money(Math.abs(b))}
-      </div>`;
-    box.appendChild(div);
-  });
-}
-
-function renderSettlements(){
-  const box = document.getElementById("settlements");
-  box.innerHTML = "";
-
-  const balances = calculateBalances();
-  const transfers = calculateSettlements(balances);
-
-  if(data.expenses.length === 0){
-    box.innerHTML = '<p class="muted">هنوز هزینه‌ای ثبت نشده.</p>';
-    return;
-  }
-
-  if(transfers.length === 0){
-    box.innerHTML = '<p class="green">🎉 همه حساب‌ها تسویه هستند!</p>';
-    return;
-  }
-
-  transfers.forEach(t => {
-    const from = data.members.find(m => m.id === t.from);
-    const to = data.members.find(m => m.id === t.to);
-    if(!from || !to) return;
-
-    const div = document.createElement("div");
-    div.className = "settlement";
-    div.innerHTML = `
-      <div><strong>${safeText(from.name)}</strong> ← <strong>${safeText(to.name)}</strong></div>
-      <div class="green" style="margin-top:8px">${money(t.amount)}</div>
-      <p class="muted">مبلغی که ${safeText(from.name)} باید به ${safeText(to.name)} پرداخت کند.</p>`;
-    box.appendChild(div);
-  });
-
-  const note = document.createElement("p");
-  note.className = "muted";
-  note.textContent = "تعداد تراکنش‌ها به روش حریصانه کاهش داده شده؛ این روش معمولاً تعداد کمی تراکنش می‌سازد، اما برای همه حالت‌ها تضمین نمی‌کند که تعداد تراکنش‌ها مطلقاً کمترین مقدار ممکن باشد.";
-  box.appendChild(note);
-}
-
-function renderHistory(){
-  const box = document.getElementById("history");
-  box.innerHTML = "";
-
-  if(data.expenses.length === 0){
-    box.innerHTML = '<p class="muted">هنوز هزینه‌ای ثبت نشده.</p>';
-    return;
-  }
-
-  [...data.expenses].reverse().forEach(e => {
-    const payer = data.members.find(m => m.id === e.payerId);
-    const names = e.participantIds.map(id => data.members.find(m => m.id === id))
-      .filter(Boolean).map(m => m.name);
-
-    const div = document.createElement("div");
-    div.className = "expense";
-    div.innerHTML = `
-      <strong>${safeText(e.title)}</strong>
-      <p>${money(e.amount)}</p>
-      <p class="muted">پرداخت‌کننده: ${safeText(payer ? payer.name : "نامشخص")}</p>
-      <p class="muted">افراد مشمول: ${names.map(safeText).join("، ")}</p>
-      <div class="actions">
-        <button class="secondary" onclick="editExpense('${e.id}')">ویرایش</button>
-        <button class="danger" onclick="deleteExpense('${e.id}')">حذف</button>
-      </div>`;
-    box.appendChild(div);
-  });
-}
-
-function render(){
-  renderMembers();
-  renderBalances();
-  renderSettlements();
-  renderHistory();
-}
-
-function exportData(){
-  const blob = new Blob([JSON.stringify(data,null,2)], {type:"application/json"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "roompay-backup.json";
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-function importData(event){
-  const file = event.target.files[0];
-  if(!file) return;
-
-  const reader = new FileReader();
-  reader.onload = () => {
-    try{
-      const imported = JSON.parse(reader.result);
-
-      if(!imported || !Array.isArray(imported.members) ||
-         !Array.isArray(imported.expenses)){
-        throw new Error("Invalid backup");
-      }
-
-      const memberIds = new Set();
-      for(const m of imported.members){
-        if(!m || typeof m.id !== "string" || typeof m.name !== "string" ||
-           !m.name.trim() || memberIds.has(m.id)){
-          throw new Error("Invalid member");
-        }
-        memberIds.add(m.id);
-      }
-
-      for(const e of imported.expenses){
-        if(!e || typeof e.id !== "string" ||
-           typeof e.title !== "string" ||
-           !Number.isSafeInteger(e.amount) || e.amount <= 0 ||
-           !memberIds.has(e.payerId) ||
-           !Array.isArray(e.participantIds) ||
-           e.participantIds.length === 0 ||
-           !e.participantIds.every(id => memberIds.has(id))){
-          throw new Error("Invalid expense");
-        }
-      }
-
-      if(!confirm("بازیابی نسخه پشتیبان، اطلاعات فعلی را جایگزین می‌کند. ادامه می‌دهی؟")) return;
-
-      data = imported;
-      cancelEdit();
-      saveData();
-      render();
-      alert("اطلاعات بازیابی شد.");
-    }catch(e){
-      alert("فایل پشتیبان معتبر نیست.");
-    }finally{
-      event.target.value = "";
-    }
-  };
-  reader.readAsText(file);
-}
-
-render();
+const KEY='roompay205_v1';
+let db=load(),mode='equal';
+function load(){try{let x=JSON.parse(localStorage.getItem(KEY));if(x&&Array.isArray(x.members)&&Array.isArray(x.expenses)&&Array.isArray(x.payments))return x}catch(e){}return {members:[],expenses:[],payments:[]}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(db))}
+function id(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function money(n){return Math.round(n).toLocaleString('fa-IR')+' تومان'}
+function toast(s){let t=document.getElementById('toast');t.textContent=s;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+function showPage(p){document.getElementById('home').classList.toggle('hidden',p!=='home');document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));if(p!=='home')document.getElementById(p).classList.remove('hidden');render();window.scrollTo({top:0,behavior:'smooth'})}
+function addMember(){let el=document.getElementById('newMember'),name=el.value.trim();if(!name)return toast('اسم عضو را وارد کن.');if(db.members.some(m=>m.name.toLowerCase()===name.toLowerCase()))return toast('این اسم قبلاً ثبت شده.');db.members.push({id:id(),name});el.value='';persist();render();toast('عضو اضافه شد.')}
+function removeMember(mid){if(db.expenses.some(e=>e.payer===mid||e.shares.some(s=>s.member===mid))||db.payments.some(p=>p.from===mid||p.to===mid))return toast('این عضو در سوابق استفاده شده و قابل حذف نیست.');if(confirm('این عضو حذف شود؟')){db.members=db.members.filter(m=>m.id!==mid);persist();render()}}
+function memberName(mid){return db.members.find(m=>m.id===mid)?.name||'عضو حذف‌شده'}
+function setMode(m){mode=m;document.getElementById('equalTab').classList.toggle('active',m==='equal');document.getElementById('manualTab').classList.toggle('active',m==='manual');document.getElementById('manualFields').classList.toggle('hidden',m!=='manual');renderShares()}
+function selected(){return [...document.querySelectorAll('#participants input:checked')].map(x=>x.value)}
+function renderShares(){let box=document.getElementById('shares');if(!box)return;let ids=selected();box.innerHTML=ids.length?ids.map(mid=>`<div class="field"><label>${esc(memberName(mid))}</label><input type="number" min="0" data-share="${mid}" placeholder="مبلغ سهم به تومان"></div>`).join(''):'<p class="muted">ابتدا افراد مشمول را انتخاب کن.</p>'}
+function renderAdd(){let payer=document.getElementById('payer'),old=payer.value;payer.innerHTML=db.members.map(m=>`<option value="${m.id}">${esc(m.name)}</option>`).join('');if(db.members.some(m=>m.id===old))payer.value=old;let box=document.getElementById('participants');let checked=selected();box.innerHTML=db.members.map(m=>`<label class="check"><input type="checkbox" value="${m.id}" ${checked.includes(m.id)?'checked':''} onchange="renderShares()"> ${esc(m.name)}</label>`).join('');renderShares()}
+function saveExpense(){let title=document.getElementById('title').value.trim(),amount=Number(document.getElementById('amount').value),payer=document.getElementById('payer').value,ids=selected();if(!db.members.length)return toast('اول اعضای اتاق را اضافه کن.');if(!title||!Number.isSafeInteger(amount)||amount<=0||!payer||!ids.length)return toast('اطلاعات هزینه را کامل وارد کن.');let shares=[];if(mode==='equal'){let base=Math.floor(amount/ids.length),rem=amount%ids.length;shares=ids.map((m,i)=>({member:m,amount:base+(i<rem?1:0)}))}else{shares=ids.map(mid=>({member:mid,amount:Number(document.querySelector(`[data-share="${mid}"]`)?.value)}));if(shares.some(s=>!Number.isSafeInteger(s.amount)||s.amount<0))return toast('مبلغ سهم هر نفر را درست وارد کن.');if(shares.reduce((a,s)=>a+s.amount,0)!==amount)return toast('مجموع سهم‌ها باید دقیقاً برابر مبلغ کل باشد.')}
+db.expenses.push({id:id(),title,amount,payer,shares,date:new Date().toISOString()});document.getElementById('title').value='';document.getElementById('amount').value='';document.querySelectorAll('#participants input').forEach(x=>x.checked=false);mode='equal';persist();setMode('equal');renderAdd();toast('هزینه با موفقیت ثبت شد.');showPage('history')}
+function expensePaid(e,mid){return db.payments.filter(p=>p.expense===e.id&&p.from===mid&&p.to===e.payer).reduce((a,p)=>a+p.amount,0)}
+function remaining(e,mid){if(mid===e.payer)return 0;let s=e.shares.find(x=>x.member===mid)?.amount||0;return Math.max(0,s-expensePaid(e,mid))}
+function recordPayment(eid){let e=db.expenses.find(x=>x.id===eid);if(!e)return;let eligible=e.shares.filter(s=>s.member!==e.payer&&remaining(e,s.member)>0);if(!eligible.length)return toast('برای این هزینه بدهی پرداخت‌نشده‌ای وجود ندارد.');let opts=eligible.map(s=>`${memberName(s.member)}: ${money(remaining(e,s.member))}`).join('\n');let who=prompt('شناسه عضو را انتخاب کن:\n'+eligible.map((s,i)=>`${i+1}) ${memberName(s.member)} — ${money(remaining(e,s.member))}`).join('\n')+'\nشماره فرد را وارد کن:');let ix=Number(who)-1;if(!Number.isInteger(ix)||!eligible[ix])return;let person=eligible[ix],max=remaining(e,person.member),raw=prompt(`مبلغ پرداختی ${memberName(person.member)} به ${memberName(e.payer)} (حداکثر ${max} تومان):`,String(max));if(raw===null)return;let amount=Number(raw);if(!Number.isSafeInteger(amount)||amount<=0||amount>max)return toast('مبلغ پرداختی معتبر نیست.');db.payments.push({id:id(),expense:e.id,from:person.member,to:e.payer,amount,date:new Date().toISOString()});persist();render();toast('پرداخت ثبت شد.')}
+function deleteExpense(eid){if(!confirm('این هزینه و پرداخت‌های مرتبط با آن حذف شوند؟'))return;db.expenses=db.expenses.filter(e=>e.id!==eid);db.payments=db.payments.filter(p=>p.expense!==eid);persist();render()}
+function balances(){let b=new Map(db.members.map(m=>[m.id,0]));for(let e of db.expenses){if(b.has(e.payer))b.set(e.payer,b.get(e.payer)+e.amount);for(let s of e.shares)if(b.has(s.member))b.set(s.member,b.get(s.member)-s.amount)}for(let p of db.payments){if(b.has(p.from))b.set(p.from,b.get(p.from)+p.amount);if(b.has(p.to))b.set(p.to,b.get(p.to)-p.amount)}return b}
+function renderMembers(){let el=document.getElementById('membersList');if(!el)return;el.innerHTML=db.members.length?db.members.map(m=>`<div class="member member-line"><strong>${esc(m.name)}</strong><div class="row" style="flex:0 0 auto"><span class="pill">عضو اتاق ۲۰۵</span><button class="btn3d secondary small" onclick="removeMember('${m.id}')">حذف</button></div></div>`).join(''):'<div class="empty">هنوز عضوی اضافه نشده است.</div>'}
+function renderHistory(){let el=document.getElementById('historyList');if(!el)return;el.innerHTML=db.expenses.length?[...db.expenses].reverse().map(e=>{let paid=e.shares.filter(s=>s.member!==e.payer).every(s=>remaining(e,s.member)===0);return `<div class="expense"><div class="member-line"><strong>${esc(e.title)}</strong><span class="pill">${paid?'تسویه‌شده':'در انتظار پرداخت'}</span></div><p>${money(e.amount)} · پرداخت‌کننده: ${esc(memberName(e.payer))}</p><div class="muted">${e.shares.map(s=>`${esc(memberName(s.member))}: ${money(s.amount)} (باقی‌مانده ${money(remaining(e,s.member))})`).join('<br>')}</div><div class="actions"><button class="btn3d green small" onclick="recordPayment('${e.id}')">ثبت پرداخت</button><button class="btn3d secondary small" onclick="deleteExpense('${e.id}')">حذف هزینه</button></div></div>`}).join(''):'<div class="empty">هنوز هزینه‌ای ثبت نشده.</div>'}
+function renderBalances(){let el=document.getElementById('balanceList'),sum=document.getElementById('balanceSummary');if(!el)return;let b=balances(),total=db.expenses.reduce((a,e)=>a+e.amount,0),paid=db.payments.reduce((a,p)=>a+p.amount,0);sum.innerHTML=`<div class="stat"><small>مجموع هزینه‌ها</small><strong>${money(total)}</strong></div><div class="stat"><small>پرداخت‌های ثبت‌شده</small><strong class="green-text">${money(paid)}</strong></div>`;el.innerHTML=db.members.length?db.members.map(m=>{let v=b.get(m.id)||0;return `<div class="member member-line"><strong>${esc(m.name)}</strong><span class="${v>0?'green-text':v<0?'red-text':''}">${v>0?'طلبکار':v<0?'بدهکار':'تسویه'} · ${money(Math.abs(v))}</span></div>`}).join(''):'<div class="empty">ابتدا اعضای اتاق را اضافه کن.</div>'}
+function settlements(){let b=balances(),credit=[],debt=[];for(let [mid,v] of b){if(v>0)credit.push({id:mid,n:v});if(v<0)debt.push({id:mid,n:-v})}credit.sort((a,b)=>b.n-a.n);debt.sort((a,b)=>b.n-a.n);let out=[],i=0,j=0;while(i<debt.length&&j<credit.length){let n=Math.min(debt[i].n,credit[j].n);if(n)out.push({from:debt[i].id,to:credit[j].id,n});debt[i].n-=n;credit[j].n-=n;if(!debt[i].n)i++;if(!credit[j].n)j++}return out}
+function renderSettle(){let el=document.getElementById('settlementList');if(!el)return;let s=settlements();el.innerHTML=!db.expenses.length?'<div class="empty">هنوز هزینه‌ای ثبت نشده.</div>':!s.length?'<div class="empty green-text">🎉 همه حساب‌ها تسویه هستند!</div>':s.map(x=>`<div class="item"><strong>${esc(memberName(x.from))}</strong> <span class="muted">به</span> <strong>${esc(memberName(x.to))}</strong><div class="green-text" style="font-size:19px;margin-top:8px">${money(x.n)}</div></div>`).join('')}
+function render(){renderMembers();renderAdd();renderHistory();renderBalances();renderSettle()}
+window.addEventListener('load',()=>{render();setTimeout(()=>{let s=document.getElementById('splash');s.style.opacity='0';setTimeout(()=>s.remove(),550)},1600)});
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 </script>
-</body>
-</html>
+</body></html>
